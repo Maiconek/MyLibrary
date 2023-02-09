@@ -18,8 +18,10 @@ public class MylibraryApplication {
 	CommandLineRunner runner(BookRepository bookRepository) {
 		return args -> {
 			Book book = new Book("Hunger Games", "Suzanne Collins");
+			Book book2 = new Book("Szybko, Szybciej, Najszybciej", "Mikołaj Sokół");
 			System.out.println("Inserting data...");
 			bookRepository.save(book);
+			bookRepository.save(book2);
 		};
 	}
 
