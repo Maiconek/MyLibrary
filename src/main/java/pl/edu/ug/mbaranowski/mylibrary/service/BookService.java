@@ -35,6 +35,7 @@ public class BookService {
                 .map(element -> {
                     element.setTitle(book.getTitle());
                     element.setAuthor(book.getAuthor());
+                    element.setYearOfPublication(book.getYearOfPublication());
                     return bookRepository.save(element);
                 }).orElseGet(() -> {
                     book.setId(id);
