@@ -15,13 +15,15 @@ public class Book {
     private Long id;
     private String title;
     private String author;
+    private int yearOfPublication;
 
     public Book() {
     }
 
-    public Book(String title, String author) {
+    public Book(String title, String author, int yearOfPublication) {
         this.title = title;
         this.author = author;
+        this.yearOfPublication = yearOfPublication;
     }
 
     @Id
@@ -48,5 +50,23 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public int getYearOfPublication() {
+        return yearOfPublication;
+    }
+
+    public void setYearOfPublication(int yearOfPublication) {
+        this.yearOfPublication = yearOfPublication;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", yearOfPublication=" + yearOfPublication +
+                '}';
     }
 }

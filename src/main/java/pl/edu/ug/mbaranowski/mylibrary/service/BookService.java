@@ -18,7 +18,7 @@ public class BookService {
     }
 
     public List<Book> allBooks() {
-        return bookRepository.findAll();
+        return bookRepository.getAllBooks();
     }
 
     public Book getSingleBook(Long id) {

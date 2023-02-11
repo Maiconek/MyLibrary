@@ -17,8 +17,8 @@ public class MylibraryApplication {
 	@Bean
 	CommandLineRunner runner(BookRepository bookRepository) {
 		return args -> {
-			Book book = new Book("Hunger Games", "Suzanne Collins");
-			Book book2 = new Book("Szybko, Szybciej, Najszybciej", "Mikołaj Sokół");
+			Book book = new Book("Hunger Games", "Suzanne Collins", 2008);
+			Book book2 = new Book("Szybko, Szybciej, Najszybciej", "Mikołaj Sokół", 2022);
 			System.out.println("Inserting data...");
 			bookRepository.save(book);
 			bookRepository.save(book2);
