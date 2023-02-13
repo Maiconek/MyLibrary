@@ -46,9 +46,16 @@ public class BookWebController {
     @PostMapping("/books/edited/{id}")
     public String updateBook(Model model, @ModelAttribute Book bookToEdit, @PathVariable Long id) {
         bookService.editBook(id, bookToEdit);
-        String info = "The book was successfully updated";
+        String info = "Book was successfully updated";
         model.addAttribute("updated", info);
         return "books-edited";
+    }
+
+    @GetMapping("/books/deleted/{id}")
+    public String deleteBook(Model model, @PathVariable Long id) {
+        model.addAttribute("title", bookService.getSingleBook(id).getTitle());
+        bookService.deleteBookFromDB(id);
+        return "books-deleted";
     }
 
 
