@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.validation.constraints.*;
 
 @Entity
 
@@ -15,12 +17,16 @@ public class Book {
     private Long id;
     private String title;
     private String author;
-    private int yearOfPublication;
+
+    @NotNull(message = "Year of publication must be before 2023 and no sooner than 1000")
+    @Min(value = 1000)
+    @Max(value = 2023)
+    private Integer yearOfPublication;
 
     public Book() {
     }
 
-    public Book(String title, String author, int yearOfPublication) {
+    public Book(String title, String author, Integer yearOfPublication) {
         this.title = title;
         this.author = author;
         this.yearOfPublication = yearOfPublication;
@@ -52,11 +58,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getYearOfPublication() {
+    public Integer getYearOfPublication() {
         return yearOfPublication;
     }
 
-    public void setYearOfPublication(int yearOfPublication) {
+    public void setYearOfPublication(Integer yearOfPublication) {
         this.yearOfPublication = yearOfPublication;
     }
 

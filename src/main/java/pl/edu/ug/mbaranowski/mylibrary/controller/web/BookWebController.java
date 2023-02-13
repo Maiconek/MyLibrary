@@ -3,12 +3,15 @@ package pl.edu.ug.mbaranowski.mylibrary.controller.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.edu.ug.mbaranowski.mylibrary.domain.Book;
 import pl.edu.ug.mbaranowski.mylibrary.service.BookService;
+
+import javax.validation.Valid;
 
 @Controller
 public class BookWebController {
@@ -31,14 +34,16 @@ public class BookWebController {
     }
 
     @GetMapping("/books/add")
-    public String bookAdding(Model model) {
-        model.addAttribute("bookToAdd", new Book());
+    public String bookAdding(Book book) {
         return "books-add";
     }
 
     @PostMapping("/books/all")
-    public String addNewBook(Model model, @ModelAttribute Book bookToAdd) {
-        bookService.addBook(bookToAdd);
+    public String addNewBook(Model model, @Valid Book book, BindingResult result) {
+        if(result.hasErrors()) {
+            return "books-add";
+        }
+        bookService.addBook(book);
         model.addAttribute("allBooks", bookService.allBooks());
         return "books";
     }

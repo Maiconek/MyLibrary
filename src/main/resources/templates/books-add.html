@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Book</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
 <h1>Add new Book</h1>
 
-<form action="#" th:action="@{/books/all}" th:object="${bookToAdd}" method="post">
+<form action="#" th:action="@{/books/all}" th:object="${book}" method="post">
 
-  <div><input type="text" th:field="*{title}"></div>
-  <div><input type="text" th:field="*{author}"></div>
-  <div><input type="number" th:field="*{yearOfPublication}"></div>
+  <div>
+      <label for="title">Title</label>
+      <input type="text" th:field="*{title}">
+  </div>
+  <div>
+      <label for="author">Author</label>
+      <input type="text" th:field="*{author}"></div>
+  <div>
+      <label for="yearOfPublication">Year of Publication</label>
+      <input type="number" th:field="*{yearOfPublication}">
+      <p th:if="${#fields.hasErrors('yearOfPublication')}" th:errorclass="error" th:errors="*{yearOfPublication}"></p>
+  </div>
   <div><input type="submit" value="Submit"></div>
 
 </form>
