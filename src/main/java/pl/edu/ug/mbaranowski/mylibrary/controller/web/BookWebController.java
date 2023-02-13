@@ -24,6 +24,12 @@ public class BookWebController {
         return "books";
     }
 
+    @GetMapping("/books/info/{id}")
+    public String bookInfo(Model model, @PathVariable Long id) {
+        model.addAttribute("book", bookService.getSingleBook(id));
+        return "books-info";
+    }
+
     @GetMapping("/books/add")
     public String bookAdding(Model model) {
         model.addAttribute("bookToAdd", new Book());
