@@ -21,10 +21,10 @@
       <label for="title" class="form-label">Title</label>
       <input type="text" class="form-control"  th:field="*{title}" placeholder="Enter book title">
   </div>
-  <div>
+  <div class="mb-3">
       <label for="author" class="form-label">Author</label>
       <input type="text" class="form-control"  th:field="*{author}" placeholder="Enter book author"></div>
-  <div>
+  <div class="mb-3">
       <label for="yearOfPublication" class="form-label">Year of Publication</label>
       <input type="number" class="form-control" th:field="*{yearOfPublication}" placeholder="Enter year of publication">
       <p th:if="${#fields.hasErrors('yearOfPublication')}" th:errorclass="error" th:errors="*{yearOfPublication}"></p>
