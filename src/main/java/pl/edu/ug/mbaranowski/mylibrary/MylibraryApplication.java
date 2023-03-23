@@ -22,10 +22,13 @@ public class MylibraryApplication {
 			Book book = new Book("Hunger Games", "Suzanne Collins", 2008);
 			Book book2 = new Book("Szybko, Szybciej, Najszybciej", "Mikołaj Sokół", 2022);
 			Author author = new Author("Suzanne", "Collins", 1962, "US");
+			Author author2 = new Author("Mikołaj", "Sokół", 1979, "Poland");
+
 			System.out.println("Inserting data...");
 			bookRepository.save(book);
 			bookRepository.save(book2);
 			authorRepository.save(author);
+			authorRepository.save(author2);
 		};
 	}
 
