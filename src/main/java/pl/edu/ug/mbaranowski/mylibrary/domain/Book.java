@@ -4,31 +4,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 
 public class Book {
     private Long id;
     private String title;
-    private String author;
 
     @NotNull(message = "Year of publication must be before 2023 and no sooner than 1000")
     @Min(value = 1000)
     @Max(value = 2023)
     private Integer yearOfPublication;
 
+    private List<Author> authors;
+
     public Book() {
     }
 
-    public Book(String title, String author, Integer yearOfPublication) {
+    public Book(String title, Integer yearOfPublication) {
         this.title = title;
-        this.author = author;
         this.yearOfPublication = yearOfPublication;
     }
 
@@ -50,13 +48,15 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    @ManyToMany
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
+
 
     public Integer getYearOfPublication() {
         return yearOfPublication;
@@ -71,8 +71,8 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
                 ", yearOfPublication=" + yearOfPublication +
+                ", authors=" + authors +
                 '}';
     }
 }

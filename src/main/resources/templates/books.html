@@ -16,7 +16,6 @@
         <thead>
         <tr>
             <th scope="col">Title</th>
-            <th scope="col">Author</th>
             <th scope="col">Year of Publication</th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -26,7 +25,6 @@
         <tbody>
         <tr th:each="book : ${allBooks}">
             <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
             <td th:text="${book.yearOfPublication}"></td>
             <td><a th:href="@{/books/info/{id}(id=${book.getId()})}">Info</a></td>
             <td><a th:href="@{/books/edit/{id}(id=${book.getId()})}">Edit</a></td>

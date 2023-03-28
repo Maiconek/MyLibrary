@@ -1,9 +1,7 @@
 package pl.edu.ug.mbaranowski.mylibrary.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Author {
@@ -12,6 +10,8 @@ public class Author {
     private String lastName;
     private int yearOfBirth;
     private String nationality;
+
+    private List<Book> books;
 
     public Author() {
     }
@@ -65,14 +65,12 @@ public class Author {
         this.nationality = nationality;
     }
 
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", yearOfBirth=" + yearOfBirth +
-                ", nationality='" + nationality + '\'' +
-                '}';
+    @ManyToMany(mappedBy = "authors")
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

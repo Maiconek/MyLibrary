@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1 th:text="${book.title}"></h1>
-  <p th:text="'Author: ' + ${book.author} + ' Year of Publication: ' + ${book.yearOfPublication}"></p>
+  <p th:text="' Year of Publication: ' + ${book.yearOfPublication}"></p>
   <a th:href="@{/books/all}">Back to books</a>
 </body>
 </html>
